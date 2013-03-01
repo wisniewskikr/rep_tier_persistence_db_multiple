@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.kwi</groupId>
+	<artifactId>webapp</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	
+	
+	<properties>
+		<main.user.transaction>java:comp/UserTransaction</main.user.transaction>
+		<main.datasource.user>java:jboss/datasources/multiple_users</main.datasource.user>
+		<main.datasource.name>java:jboss/datasources/multiple_names</main.datasource.name>
+		<main.datasource.surname>java:jboss/datasources/multiple_surnames</main.datasource.surname>
+				
+		<test.db.url.user>jdbc:mysql://localhost:3306/db_multiple_users_test</test.db.url.user>
+		<test.db.url.name>jdbc:mysql://localhost:3306/db_multiple_names_test</test.db.url.name>
+		<test.db.url.surname>jdbc:mysql://localhost:3306/db_multiple_surnames_test</test.db.url.surname>
+		<test.db.driver>com.mysql.jdbc.Driver</test.db.driver>
+		<test.db.username>root</test.db.username>
+		<test.db.password>P@ssw0rd</test.db.password>
+	</properties>
+	
+	
+	<build>
+		<finalName>${artifactId}</finalName>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources/</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<dependencies>
+		
+		<!-- JSP libraries -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+		
+		<!-- Log libraries -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		
+		
+		<!-- Tests libraries -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.8</version>
+		</dependency>
+		
+		<!-- Data base libraries -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Servlets dependencies -->
+		<dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <version>6.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+	<groupId>commons-logging</groupId>
+	<artifactId>commons-logging</artifactId>
+	<version>1.1</version>
+</dependency>
+				
+	</dependencies>
+
+</project>

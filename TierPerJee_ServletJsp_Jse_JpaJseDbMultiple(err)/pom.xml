@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.kwi</groupId>
+	<artifactId>webapp</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+	
+	
+	<properties>
+		<hibernate.version>4.1.7.Final</hibernate.version>
+		
+		<main.user.transaction>java:comp/UserTransaction</main.user.transaction>
+		<main.persistence-unit.users>pu_users</main.persistence-unit.users>
+		<main.persistence-unit.names>pu_names</main.persistence-unit.names>
+		<main.persistence-unit.surnames>pu_surnames</main.persistence-unit.surnames>
+		<main.datasource.users>java:jboss/datasources/multiple_users</main.datasource.users>
+		<main.datasource.names>java:jboss/datasources/multiple_names</main.datasource.names>
+		<main.datasource.surnames>java:jboss/datasources/multiple_surnames</main.datasource.surnames>
+				
+		<test.persistence-unit.users>pu_test_users</test.persistence-unit.users>
+		<test.persistence-unit.names>pu_test_names</test.persistence-unit.names>
+		<test.persistence-unit.surnames>pu_test_surnames</test.persistence-unit.surnames>
+		<test.db.url.users>jdbc:mysql://localhost:3306/db_multiple_users_test</test.db.url.users>
+		<test.db.url.names>jdbc:mysql://localhost:3306/db_multiple_names_test</test.db.url.names>
+		<test.db.url.surnames>jdbc:mysql://localhost:3306/db_multiple_surnames_test</test.db.url.surnames>
+		<test.db.driver>com.mysql.jdbc.Driver</test.db.driver>
+		<test.db.username>root</test.db.username>
+		<test.db.password>P@ssw0rd</test.db.password>
+	</properties>
+	
+	
+	<build>
+		<finalName>${artifactId}</finalName>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources/</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<dependencies>
+		
+		<!-- JSP libraries -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.0.6</version>
+		</dependency>
+		
+		<!-- Log libraries -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.4.2</version>
+		</dependency>
+		
+		<!-- Hibernate dependencies -->
+		<!-- Set as "provided" for JBoss - there is it own hibernate -->
+		 <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>4.3.0.Final</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- Tests libraries -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.4.8</version>
+		</dependency>
+		
+		<!-- Data base libraries -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.18</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Servlets dependencies -->
+		<dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <version>6.0</version>
+		    <scope>provided</scope>
+		</dependency>
+				
+	</dependencies>
+
+</project>
